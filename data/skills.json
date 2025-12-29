@@ -1,0 +1,16 @@
+[
+  { "name": "PYTHON", "icon": "images/skills/python.png" },
+  { "name": "JAVA", "icon": "images/skills/java.png" },
+
+  { "name": "DJANGO", "icon": "images/skills/django.png" },
+  { "name": "Power BI", "icon": "images/skills/power-bi-icon.png" },
+  { "name": "R", "icon": "images/skills/r.png" },
+  { "name": "EXCEL", "icon": "images/skills/excel.png" },
+  { "name": "MongoDB", "icon": "images/skills/mongodb.png" },
+  { "name": "MYSQL", "icon": "images/skills/mysql.png" },
+  { "name": "HTML", "icon": "images/skills/html.png" },
+  { "name": "CSS", "icon": "images/skills/css.png" },
+  { "name": "JAVASCRIPT", "icon": "images/skills/java-script.png" },
+  { "name": "GITHUB", "icon": "images/skills/github.png" },
+  { "name": "VS", "icon": "images/skills/visual-studio-code.png" }
+]

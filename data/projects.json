@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Reinforcement Learning Game Environment",
+    "icon": "🧠",
+    "description": "Designed a custom Grid-World environment and trained a reinforcement learning agent using Deep Q-Networks (DQN). Implemented experience replay, target networks, and epsilon-greedy exploration to achieve stable learning.",
+    "tech": "Python · PyTorch · TensorFlow · OpenAI Gym",
+    "image": "images/rl-project.png",
+    "reverse": false
+  },
+  {
+    "title": "Emotion Detection using Hybrid CNN–LSTM",
+    "icon": "😊",
+    "description": "Built an end-to-end emotion classification pipeline using NLP techniques. Designed a hybrid CNN–LSTM model to capture local patterns and long-term dependencies.",
+    "tech": "Python · TensorFlow · Keras · NLP",
+    "image": "images/emotion-cnn.png",
+    "reverse": true
+  },
+  {
+    "title": "Emotion-Based Music Recommendation System",
+    "icon": "🎵",
+    "description": "Developed a web-based application that recommends music based on detected user emotions. Integrated ML models with Django backend and Spotify-style UI.",
+    "tech": "Python · Machine Learning · Django · HTML · CSS · Bootstrap",
+    "image": "images/music-recommender.png",
+    "reverse": false
+  },
+  {
+    "title": "Sales Performance Dashboard",
+    "icon": "📊",
+    "description": "Created an interactive Power BI dashboard to track KPIs, sales trends, and product performance using DAX and Power Query.",
+    "tech": "Power BI · DAX · Power Query",
+    "image": "images/sales-dashboard.png",
+    "reverse": true
+  },
+  {
+    "title": "Gym Fitness – Full Stack Web Application",
+    "icon": "🏋️",
+    "description": "Built a full-stack web application for managing fitness plans and workout logs with authentication and CRUD operations.",
+    "tech": "Django · HTML · CSS · Bootstrap · MongoDB",
+    "image": "images/gym-fitness.png",
+    "reverse": false
+  }
+]
