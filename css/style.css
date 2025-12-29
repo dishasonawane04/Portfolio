@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f0223, #19012a);
+  background: linear-gradient(135deg, #0c0222,#030b32);
   color: #e5e7eb;
   scroll-behavior: smooth;
 }
@@ -1011,3 +1011,47 @@ body.light-mode footer {
   font-size: 1.8rem;
   color: #a5b4fc;
 }
+
+/* ================================
+   DATA GRID BACKGROUND ANIMATION
+================================ */
+
+.data-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(transparent 95%, rgba(140,82,255,0.15) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(140,82,255,0.15) 96%);
+  background-size: 60px 60px;
+  animation: gridMove 18s linear infinite;
+}
+
+/* Soft dark overlay for readability */
+.data-grid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+    rgba(140,82,255,0.12),
+    #060014 70%);
+  animation: gridMove 18s linear infinite, gridPulse 6s ease-in-out infinite;
+
+}
+
+/* Grid motion */
+@keyframes gridMove {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 300px 300px, 300px 300px;
+  }
+}
+
+@keyframes gridPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.4; }
+}
+
