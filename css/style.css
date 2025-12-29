@@ -273,15 +273,15 @@ section {
 
 footer {
   background-color: #020617;
-  border-top: 1px solid #1e293b;
+  border-top: 5px solid #1e293b;
 }
 
 footer p {
-  font-size: 1rem;
+  font-size: 1.9rem;
 }
 
 footer small {
-  font-size: 0.85rem;
+  font-size: 1.4rem;
   color: #94a3b8;
 }
 
@@ -440,7 +440,7 @@ body.light-mode footer {
 
 .about-text p {
   font-size: 1.29rem;
-  line-height: 1.8;
+  line-height: 2.0;
   color: #cbd5f5;
   margin-bottom: 8px;
 }
@@ -544,7 +544,7 @@ body.light-mode footer {
 }
 
 .education-section {
-  padding: 130px 0;
+  padding: 110px 0;
 }
 
 .education-card {
@@ -721,7 +721,7 @@ body.light-mode footer {
 }
 
 .projects-section {
-  padding: 130px 0;
+  padding: 80px 0;
 }
 
 .project-card {
@@ -818,6 +818,9 @@ body.light-mode footer {
   transform: translateY(0);
 }
 
+.skills-section {
+  padding: 60px 0;
+}
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -994,7 +997,7 @@ body.light-mode footer {
 
 .contact-quote {
   font-family: monospace;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #cbd5f5;
   margin-bottom: 24px;
   opacity: 0.85;
@@ -1150,4 +1153,74 @@ body.light-mode footer {
   position: relative;
   z-index: 2;
 }
+/* ===== CONNECT AVATAR ===== */
 
+.connect-avatar {
+  position: relative;
+  width: 200px;   /* ✅ proper size */
+  margin: auto;
+}
+
+/* Avatar image */
+.connect-avatar img {
+  width: 100%;   /* ✅ important */
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+
+  /* breathing + floating combined */
+  animation: floatFace 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
+}
+
+/* Floating + breathing */
+@keyframes floatFace {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Hover interaction */
+.connect-avatar:hover img {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+/* ===== AVATAR CONTAINER (FOR EYES) ===== */
+
+.avatar-container {
+  position: relative;
+  width: 200px;  /* ✅ MUST match avatar size */
+  margin: auto;
+}
+
+.avatar-img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== EYES ===== */
+
+.eye {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #111;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.08s linear;
+}
+
+/* Eye positions (tuned for your emoji) */
+.eye.left {
+  top: 95px;
+  left: 75px;
+}
+
+.eye.right {
+  top: 95px;
+  left: 120px;
+}
