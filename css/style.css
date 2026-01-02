@@ -1224,3 +1224,61 @@ body.light-mode footer {
   top: 95px;
   left: 120px;
 }
+
+/* =========================
+   CONNECT AVATAR (FIXED)
+========================= */
+
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 180px;          /* FIXED SIZE */
+  height: 180px;
+  margin: auto;
+}
+
+.avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+  animation: floatAvatar 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
+}
+
+/* Floating effect */
+@keyframes floatAvatar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================
+   EYES (VISIBLE & MOVING)
+========================= */
+
+.eye {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  transition: transform 0.08s linear;
+  z-index: 5;
+}
+
+/* LEFT EYE */
+.eye.left {
+  top: 78px;
+  left: 62px;
+}
+
+/* RIGHT EYE */
+.eye.right {
+  top: 78px;
+  left: 108px;
+}
