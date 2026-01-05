@@ -32,3 +32,10 @@ const revealOnScroll = () => {
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll(); // trigger on load
 
+window.addEventListener("load", () => {
+  const loader = document.getElementById("page-loader");
+
+  setTimeout(() => {
+    loader.classList.add("hidden");
+  }, 1600); // loader visible time
+});

@@ -70,7 +70,7 @@ section {
 
 .nav-links a {
   font-family: monospace;
-  font-size: 1.25rem;
+  font-size: 1.36rem;
   font-weight: 500;
   color: #cbd5f5;
   text-decoration: none;
@@ -99,14 +99,43 @@ section {
    HERO SECTION
 ========================= */
 
+
 .hero-section {
-  min-height: 100vh;
   position: relative;
+  min-height: 100vh;
   overflow: hidden;
-  background: radial-gradient(circle at top right, #242251, #02071d);
+  background: radial-gradient(circle at top left, #1e1b4b, #020617);
 }
 
-.data-wave {
+/* Background animation wrapper */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+
+/* Floating data dots */
+.hero-bg::before,
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px),
+    radial-gradient(circle, rgba(139,92,246,0.2) 1px, transparent 1px);
+  background-size: 60px 60px, 120px 120px;
+  animation: particlesFloat 40s linear infinite;
+}
+
+@keyframes particlesFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* Soft moving gradient wave */
+.hero-wave {
   position: absolute;
   inset: 0;
   background:
@@ -116,7 +145,7 @@ section {
       rgba(140,82,255,0.12)
     );
   background-size: 400% 400%;
-  animation: waveMove 24s ease infinite;
+  animation: waveMove 18s ease infinite;
   z-index: 0;
 }
 
@@ -126,34 +155,35 @@ section {
   100% { background-position: 0% 50%; }
 }
 
-.hero-section * {
+/* Keep hero content ABOVE animation */
+.hero-section .container,
+.hero-section .row,
+.hero-section h1,
+.hero-section h3,
+.hero-section p,
+.hero-section a {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure content stays above animation */
+.hero-content {
   position: relative;
   z-index: 2;
 }
 
 
-.hero-code,
-.hero-title,
-.hero-subtitle,
-.hero-desc,
-.connect-btn {
-  opacity: 1;
-  transform: translateY(24px);
-  animation: riseUp 0.8s ease forwards;
+
+
+
+
+
+
+.hero-section * {
+  position: relative;
+  z-index: 2;
 }
 
-.hero-code { animation-delay: 0.2s; }
-.hero-title { animation-delay: 0.4s; }
-.hero-subtitle { animation-delay: 0.6s; }
-.hero-desc { animation-delay: 0.8s; }
-.connect-btn { animation-delay: 1s; }
-
-@keyframes riseUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 
 .hero-code {
@@ -1142,143 +1172,117 @@ body.light-mode footer {
   z-index: 0;
 }
 
-@keyframes waveMove {
+
+/* =========================
+   FOOTER AVATAR SECTION
+========================= */
+
+.footer-avatar-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 40px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+  
+  /* Floating animation */
+  animation: avatarFloat 5s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-12px);
+  }
+}
+
+/* Avatar Face Container (for eyes overlay) */
+.footer-avatar-face {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Hover effect for avatar */
+.footer-avatar-container:hover .footer-avatar-img {
+  filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.6));
+}
+
+/* =========================
+   PAGE LOADER
+========================= */
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a0b2e, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  animation: fadeUp 1.4s ease forwards;
+}
+
+.loader-title {
+  font-size: 3rem;
+  font-family: monospace;
+  font-weight: 700;
+  background: linear-gradient(
+    270deg,
+    #a855f7,
+    #6366f1,
+    #7c3aed
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+.loader-subtitle {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #cbd5f5;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+/* Animations */
+@keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Keep content above */
-.hero-section * {
-  position: relative;
-  z-index: 2;
-}
-/* ===== CONNECT AVATAR ===== */
-
-.connect-avatar {
-  position: relative;
-  width: 200px;   /* ✅ proper size */
-  margin: auto;
-}
-
-/* Avatar image */
-.connect-avatar img {
-  width: 100%;   /* ✅ important */
-  display: block;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-
-  /* breathing + floating combined */
-  animation: floatFace 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
-}
-
-/* Floating + breathing */
-@keyframes floatFace {
-  0%, 100% {
-    transform: translateY(0) scale(1);
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% {
-    transform: translateY(-8px) scale(1.02);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Hover interaction */
-.connect-avatar:hover img {
-  transform: scale(1.05) rotate(-1deg);
-}
-
-/* ===== AVATAR CONTAINER (FOR EYES) ===== */
-
-.avatar-container {
-  position: relative;
-  width: 200px;  /* ✅ MUST match avatar size */
-  margin: auto;
-}
-
-.avatar-img {
-  width: 100%;
-  display: block;
-}
-
-/* ===== EYES ===== */
-
-.eye {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #111;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: transform 0.08s linear;
-}
-
-/* Eye positions (tuned for your emoji) */
-.eye.left {
-  top: 95px;
-  left: 75px;
-}
-
-.eye.right {
-  top: 95px;
-  left: 120px;
-}
-
-/* =========================
-   CONNECT AVATAR (FIXED)
-========================= */
-
-.avatar-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.avatar-container {
-  position: relative;
-  width: 180px;          /* FIXED SIZE */
-  height: 180px;
-  margin: auto;
-}
-
-.avatar-img {
-  width: 100%;
-  border-radius: 50%;
-  display: block;
-  animation: floatAvatar 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
-}
-
-/* Floating effect */
-@keyframes floatAvatar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-/* =========================
-   EYES (VISIBLE & MOVING)
-========================= */
-
-.eye {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #111;
-  border-radius: 50%;
-  transition: transform 0.08s linear;
-  z-index: 5;
-}
-
-/* LEFT EYE */
-.eye.left {
-  top: 78px;
-  left: 62px;
-}
-
-/* RIGHT EYE */
-.eye.right {
-  top: 78px;
-  left: 108px;
-}
