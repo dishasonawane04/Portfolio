@@ -1,16 +1,21 @@
-document.addEventListener("mousemove", (e) => {
-  const eyes = document.querySelectorAll(".eye");
+// Eye tracking function
+const eyes = document.querySelectorAll('.eye');
 
-  eyes.forEach((eye) => {
-    const rect = eye.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
+document.addEventListener('mousemove', (e) => {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
 
-    const radian = Math.atan2(e.clientY - y, e.clientX - x);
+  eyes.forEach(eye => {
+    const eyeRect = eye.getBoundingClientRect();
+    const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+    const eyeCenterY = eyeRect.top + eyeRect.height / 2;
 
-    const moveX = Math.cos(radian) * 4;
-    const moveY = Math.sin(radian) * 4;
+    const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
+    const distance = 8; // How far the pupil moves
 
-    eye.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    const pupilX = Math.cos(angle) * distance;
+    const pupilY = Math.sin(angle) * distance;
+
+    eye.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
   });
 });

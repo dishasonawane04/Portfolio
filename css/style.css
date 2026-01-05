@@ -1019,10 +1019,11 @@ body.light-mode footer {
 ========================= */
 
 .contact-section {
-  min-height: 90vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   background: radial-gradient(circle at bottom, #3b0a45, #020617);
+  padding: 20px 0;
 }
 
 .contact-quote {
@@ -1177,47 +1178,75 @@ body.light-mode footer {
    FOOTER AVATAR SECTION
 ========================= */
 
+/* Avatar Container */
 .footer-avatar-container {
   position: relative;
   width: 280px;
   height: 280px;
-  margin: 40px auto 0;
+  margin:  40px auto ;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Avatar Image */
 .footer-avatar-img {
-  width: 100%;
-  height: 100%;
+  width: 470px;
+  height: 490px;
   object-fit: contain;
+  aspect-ratio: 1/1;;
   border-radius: 50%;
   filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
-  
-  /* Floating animation */
-  animation: avatarFloat 5s ease-in-out infinite;
+  /* animation: floatAvatar 5s ease-in-out infinite; */
 }
 
-@keyframes avatarFloat {
-  0%, 100% { 
-    transform: translateY(0px);
+Floating + breathing animation
+@keyframes floatAvatar {
+  0% {
+    transform: translateY(0) scale(1);
   }
-  50% { 
-    transform: translateY(-12px);
+  50% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Avatar Face Container (for eyes overlay) */
-.footer-avatar-face {
+/* Eyes */
+.eye {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  background: #111;
+  border-radius: 50%;
+  top: 120px; /* adjust slightly if needed */
+  transition: transform 0.08s linear;
 }
 
-/* Hover effect for avatar */
-.footer-avatar-container:hover .footer-avatar-img {
-  filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.6));
+/* Eye positions (adjust once based on image) */
+.eye.left {
+  left: 105px;
 }
+
+.eye.right {
+  right: 105px;
+}
+
+/* Blink animation */
+@keyframes blink {
+  0%, 95%, 100% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.1);
+  }
+}
+
+.eye {
+  animation: blink 5s infinite;
+}
+
 
 /* =========================
    PAGE LOADER
