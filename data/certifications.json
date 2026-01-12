@@ -9,8 +9,16 @@
   {
     "title": "Introduction to MongoDB",
     "provider": "MongoDB University",
-    "year": "2023",
+    "year": "2024",
     "icon": "images/certifications/mongodb.png",
     "certificate": "https://drive.google.com/file/d/1I6x-iffvKopoClZkoSwE4zHYKOt377LK/view?usp=sharing"
+  },
+  {
+    "title": "Generative AI for Data Scientists",
+    "provider": "IBM  · Coursera",
+    "year": "2026",
+    "icon": "images/certifications/mongodb.png",
+    "certificate":"https://drive.google.com/file/d/1p-vifbC27POaiLMT0lv9PnYzHPF9tAI0/view?usp=drive_link"
+
   }
 ]

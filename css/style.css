@@ -976,13 +976,13 @@ body.light-mode footer {
 }
 
 .cert-card p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #cbd5f5;
 }
 
 .cert-year {
   margin-top: 10px;
-  font-size: 0.3;
+  font-size: 2.9;
   font-family: monospace;
   color: #a5b4fc;
 }
@@ -996,7 +996,7 @@ body.light-mode footer {
   margin-top: 14px;
   padding: 8px 18px;
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 
   color: #a5b4fc;
   text-decoration: none;
