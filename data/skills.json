@@ -12,5 +12,11 @@
   { "name": "CSS", "icon": "images/skills/css.png" },
   { "name": "JAVASCRIPT", "icon": "images/skills/java-script.png" },
   { "name": "GITHUB", "icon": "images/skills/github.png" },
-  { "name": "VS", "icon": "images/skills/visual-studio-code.png" }
+  { "name": "VS", "icon": "images/skills/visual-studio-code.png" },
+  { "name": "POSTGRESQL", "icon": "images/skills/postgresql.png" },
+  { "name": "OLLAMA", "icon": "images/skills/ollama.png" },
+  { "name": "LLAVA", "icon": "images/skills/llava.png" },
+  { "name": "PROMPT ENGINEERING", "icon": "images/skills/prompt-engineering.png" }
+  
+  
 ]
