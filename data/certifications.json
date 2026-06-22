@@ -20,5 +20,14 @@
     "icon": "images/certifications/mongodb.png",
     "certificate":"https://drive.google.com/file/d/1_O1-nrO7HVQTgbXw6t3l1C3tdHp9gdoy/view?usp=drive_link"
 
+  },
+  {
+    "title": "Google Cybersecurity Professional Certificate",
+    "provider": "Google  · Coursera",
+    "year": "2026",
+    "icon": "images/certifications/google.png",
+    "certificate":"https://drive.google.com/file/d/1UINN37VG5Ru1Cy302p805_94AgKXUKSM/view?usp=sharing"
+
   }
+
 ]
