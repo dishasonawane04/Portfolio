@@ -27,8 +27,18 @@
 <!-- Animated Background -->
 <div class="data-grid-bg"></div>
 
-
 <body>
+    <!-- Theme Initializer (prevents flash of white/dark mode) -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('portfolio-theme') || 'system';
+            const isDarkSystem = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'light' || (theme === 'system' && !isDarkSystem)) {
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
+
     <!-- Page Loader -->
     <div id="page-loader">
         <div class="loader-content">
@@ -90,6 +100,22 @@
 
                     <div class="d-flex align-items-center gap-3 mt-4">
                         <a href="#contact" class="connect-btn">Let’s Connect</a>
+                        <div class="theme-menu-container">
+                            <button class="theme-toggle-btn" id="themeToggleBtn" title="Change Theme" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-circle-half"></i>
+                            </button>
+                            <div class="theme-dropdown" id="themeDropdown">
+                                <button class="theme-dropdown-item" data-theme="light">
+                                    <span>🌞 Light</span> <span class="theme-item-check">✓</span>
+                                </button>
+                                <button class="theme-dropdown-item" data-theme="dark">
+                                    <span>🌙 Dark</span> <span class="theme-item-check">✓</span>
+                                </button>
+                                <button class="theme-dropdown-item" data-theme="system">
+                                    <span>💻 System</span> <span class="theme-item-check">✓</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -583,6 +609,7 @@
     <script src="js/certifications.js"></script>
     <script src="js/avatar.js"></script>
     <script src="js/avatar-eyes.js"></script>
+    <script src="js/theme.js"></script>
 
 
 
