@@ -2238,3 +2238,127 @@ body.light-mode .contact-icon:hover {
 body.light-mode .contact-footer {
   color: #4f46e5;
 }
+
+/* =========================
+   SKILL POPUP TOOLTIP
+========================= */
+
+.skill-popup {
+  position: absolute;
+  width: 280px;
+  background: rgba(10, 5, 25, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10001;
+  
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-popup.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.skill-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.skill-popup-close:hover {
+  color: #ffffff;
+}
+
+.skill-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.skill-popup-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.skill-popup-title {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.skill-popup-level {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #a855f7;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.skill-popup-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cbd5f5;
+  text-align: left;
+}
+
+/* Light Mode Overrides */
+body.light-mode .skill-popup {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .skill-popup-close {
+  color: #64748b;
+}
+
+body.light-mode .skill-popup-close:hover {
+  color: #0f172a;
+}
+
+body.light-mode .skill-popup-title {
+  color: #0f172a;
+}
+
+body.light-mode .skill-popup-level {
+  color: #6366f1;
+}
+
+body.light-mode .skill-popup-desc {
+  color: #475569;
+}
+
+/* Mobile overrides for skill-popup centered modal */
+@media (max-width: 767px) {
+  .skill-popup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.95) !important;
+    width: min(90%, 320px) !important;
+  }
+  .skill-popup.show {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+}
