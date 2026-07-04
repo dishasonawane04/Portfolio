@@ -111,10 +111,77 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = container.querySelector(".disha-ai-toggle-btn");
   const popup = container.querySelector(".disha-ai-popup");
   const closeBtn = container.querySelector(".disha-ai-close-btn");
+  const voiceBtn = container.querySelector(".disha-ai-voice-btn");
   const chatForm = container.querySelector(".disha-ai-form");
   const chatInput = container.querySelector(".disha-ai-input");
   const messagesContainer = container.querySelector(".disha-ai-messages");
   const chipsContainer = container.querySelector(".disha-ai-chips-container");
+
+  // Voice Preference & Speech Synthesis Setup
+  let voiceEnabled = localStorage.getItem("disha-ai-voice-enabled") !== "false";
+  let currentUtterance = null;
+
+  function updateVoiceBtnUI() {
+    if (!voiceBtn) return;
+    const icon = voiceBtn.querySelector("i");
+    if (voiceEnabled) {
+      if (icon) icon.className = "bi bi-volume-up-fill";
+      voiceBtn.setAttribute("aria-label", "Turn voice off");
+      voiceBtn.setAttribute("title", "Turn voice off");
+    } else {
+      if (icon) icon.className = "bi bi-volume-mute-fill";
+      voiceBtn.setAttribute("aria-label", "Turn voice on");
+      voiceBtn.setAttribute("title", "Turn voice on");
+    }
+  }
+
+  function cleanTextForSpeech(text) {
+    let clean = text.replace(/\[(.*?)\]\((.*?)\)/g, "$1"); // links
+    clean = clean.replace(/\*\*(.*?)\*\"/g, "$1"); // bold text (first try)
+    clean = clean.replace(/\*\*(.*?)\*\*/g, "$1"); // bold text (standard)
+    clean = clean.replace(/•/g, ""); // list bullets
+    clean = clean.replace(/<[^>]*>/g, ""); // HTML tags
+    return clean.trim();
+  }
+
+  function speakMessage(text) {
+    if (!voiceEnabled || !window.speechSynthesis) return;
+
+    window.speechSynthesis.cancel();
+
+    const cleanText = cleanTextForSpeech(text);
+    if (!cleanText) return;
+
+    currentUtterance = new SpeechSynthesisUtterance(cleanText);
+    currentUtterance.volume = 1.0;
+    currentUtterance.pitch = 1.0;
+    currentUtterance.rate = 0.95;
+
+    if (window.speechSynthesis.getVoices) {
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(voice =>
+        voice.lang.startsWith("en-") &&
+        (voice.name.toLowerCase().includes("google") ||
+         voice.name.toLowerCase().includes("natural") ||
+         voice.name.toLowerCase().includes("zira") ||
+         voice.name.toLowerCase().includes("samantha"))
+      ) || voices.find(voice => voice.lang.startsWith("en"));
+
+      if (preferredVoice) {
+        currentUtterance.voice = preferredVoice;
+      }
+    }
+
+    window.speechSynthesis.speak(currentUtterance);
+  }
+
+  if (window.speechSynthesis && window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      if (window.speechSynthesis.getVoices) {
+        window.speechSynthesis.getVoices();
+      }
+    };
+  }
 
   // Keep chat history in memory, load from sessionStorage if available
   let chatHistory = [];
@@ -146,12 +213,16 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn.setAttribute("aria-expanded", "true");
     chatInput.focus();
     scrollToBottom();
+    speakMessage(knowledgeBase.greetings);
   }
 
   function closeChat() {
     popup.classList.remove("disha-ai-show");
     toggleBtn.classList.remove("disha-ai-active");
     toggleBtn.setAttribute("aria-expanded", "false");
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
   }
 
   function toggleChat() {
@@ -172,6 +243,19 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation();
     closeChat();
   });
+
+  if (voiceBtn) {
+    updateVoiceBtnUI();
+    voiceBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      voiceEnabled = !voiceEnabled;
+      localStorage.setItem("disha-ai-voice-enabled", voiceEnabled.toString());
+      updateVoiceBtnUI();
+      if (!voiceEnabled && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    });
+  }
 
   // Close when clicking outside container
   document.addEventListener("click", (e) => {
@@ -333,6 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       const reply = matchResponse(query);
       appendMessage(reply, "bot");
+      speakMessage(reply);
     }, 300);
   });
 
@@ -349,6 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       const reply = matchResponse(query);
       appendMessage(reply, "bot");
+      speakMessage(reply);
     }, 250);
   });
 

@@ -192,11 +192,17 @@ body.light-mode .disha-ai-toggle-label {
   display: block;
 }
 
+.disha-ai-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.disha-ai-voice-btn,
 .disha-ai-close-btn {
   background: transparent;
   border: none;
   color: #94a3b8;
-  font-size: 1.6rem;
   cursor: pointer;
   line-height: 1;
   padding: 4px;
@@ -210,11 +216,21 @@ body.light-mode .disha-ai-toggle-label {
   outline: none;
 }
 
+.disha-ai-voice-btn {
+  font-size: 1.15rem;
+}
+
+.disha-ai-close-btn {
+  font-size: 1.6rem;
+}
+
+.disha-ai-voice-btn:hover,
 .disha-ai-close-btn:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.08);
 }
 
+.disha-ai-voice-btn:focus-visible,
 .disha-ai-close-btn:focus-visible {
   outline: 2px solid #a855f7;
 }
@@ -423,10 +439,12 @@ body.light-mode .disha-ai-header-subtitle {
   color: #4f46e5;
 }
 
+body.light-mode .disha-ai-voice-btn,
 body.light-mode .disha-ai-close-btn {
   color: #64748b;
 }
 
+body.light-mode .disha-ai-voice-btn:hover,
 body.light-mode .disha-ai-close-btn:hover {
   color: #0f172a;
   background: rgba(0, 0, 0, 0.05);
