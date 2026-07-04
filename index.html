@@ -15,6 +15,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/disha-ai-chatbot.css">
 
     <!-- LinkedIn / Social Preview -->
     <meta property="og:title" content="Disha Sonawane | Data Science Portfolio" />
@@ -611,9 +612,50 @@
     <script src="js/avatar-eyes.js"></script>
     <script src="js/theme.js"></script>
 
+    <!-- Disha AI Chatbot Container -->
+    <div id="disha-ai-container">
+        <div class="disha-ai-trigger-wrapper">
+            <button class="disha-ai-toggle-btn" aria-haspopup="true" aria-expanded="false" aria-controls="disha-ai-popup" aria-label="Toggle Disha AI Chatbot">
+                <i class="bi bi-chat-dots-fill"></i>
+            </button>
+        </div>
+        <div class="disha-ai-popup" id="disha-ai-popup" role="dialog" aria-label="Disha AI Chatbot Popup" aria-hidden="true">
+            <div class="disha-ai-header">
+                <div class="disha-ai-header-info">
+                    <div class="disha-ai-avatar">
+                        DS
+                        <div class="disha-ai-status-dot"></div>
+                    </div>
+                    <div>
+                        <h4 class="disha-ai-header-title">Disha AI</h4>
+                        <span class="disha-ai-header-subtitle">Portfolio Assistant</span>
+                    </div>
+                </div>
+                <button class="disha-ai-close-btn" aria-label="Close Chat" title="Close Chat">&times;</button>
+            </div>
+            <div class="disha-ai-messages" role="log" aria-live="polite">
+                <!-- Messages will be dynamically rendered here -->
+            </div>
+            <div class="disha-ai-chips-container">
+                <button class="disha-ai-chip">Skills</button>
+                <button class="disha-ai-chip">Projects</button>
+                <button class="disha-ai-chip">Experience</button>
+                <button class="disha-ai-chip">Education</button>
+                <button class="disha-ai-chip">Contact</button>
+            </div>
+            <div class="disha-ai-footer">
+                <form class="disha-ai-form">
+                    <input type="text" class="disha-ai-input" placeholder="Ask me something..." aria-label="Ask Disha AI a question">
+                    <button type="submit" class="disha-ai-send-btn" aria-label="Send Message" title="Send Message">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-
-
+    <!-- Disha AI Chatbot Script -->
+    <script src="js/disha-ai-chatbot.js" defer></script>
 
 </body>
 
